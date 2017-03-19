@@ -16,8 +16,10 @@ const registerRoutes = () => {
 const initServer = () => {
     registerMiddlewares()
     registerRoutes()
-    app.set('views', warp.config.server.view.path)
-    app.set('view engine', warp.config.server.view.engine)
+    if(warp.config.server.view) {
+      app.set('views', warp.config.server.view.path)
+      app.set('view engine', warp.config.server.view.engine)
+    }
     app.use(express.static(warp.config.server.public))
     return app
 }
