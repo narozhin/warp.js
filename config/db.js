@@ -1,12 +1,12 @@
 
 module.exports = {
     login: {
-        database: 'community',
-        username: 'community',
-        password: 'community'
+        database: '',
+        username: '',
+        password: ''
     },
     options: {
-        host: 'localhost',
-        dialect: 'mysql'
+        host: '',
+        dialect: ''
     }
 }

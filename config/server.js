@@ -1,5 +1,5 @@
 
 module.exports = {
-    port: 6001,
+    port: 6000,
     public: './public'
 }
