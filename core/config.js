@@ -1,11 +1,5 @@
-const includeAll = require('include-all')
-
-const loadConfig = (dir) => includeAll({
-  dirname: dir,
-  filter      :  /(.+)\.js$/,
-  optional    :  true
-})
+const utils = require('./utils')
 
 module.exports = {
-    load: loadConfig
+    load: (dir) => utils.loadModules(dir, /([a-z].+)\.js$/)
 }

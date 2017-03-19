@@ -1,14 +1,7 @@
-const includeAll = require('include-all')
 const Sequelize = require('sequelize')
 const utils = require('./utils')
 
 global.__ = Sequelize
-
-const loadModules = (dir) => includeAll({
-  dirname: dir,
-  filter      :  /(^[A-Z].+)\.js$/,
-  optional    :  true
-})
 
 const prepareModelName = (name) => name.charAt(0).toUpperCase() + name.substr(1)
 
@@ -27,12 +20,12 @@ const makeModels = (wrapper, modules, sequelize) => {
 
 const load = (dir) => {
   const sequelize = new Sequelize(
-    warp.config.db.database,
-    warp.config.db.username,
-    warp.config.db.password,
+    warp.config.db.login.database,
+    warp.config.db.login.username,
+    warp.config.db.login.password,
     warp.config.db.options
   )
-  const modules = loadModules(dir)
+  const modules = utils.loadModules(dir, /(^[A-Z].+)\.js$/)
   makeModels(global, modules, sequelize)
 }
 

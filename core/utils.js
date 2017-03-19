@@ -1,4 +1,10 @@
+const includeAll = require('include-all')
 
+const loadModules = (dir, filter) => includeAll({
+    dirname     : dir,
+    filter      : filter || /(.+)\.js$/,
+    optional    : true
+})
 
 const cloneObject = (obj) => JSON.parse(JSON.stringify(obj))
 
@@ -18,5 +24,6 @@ const objectToArray = (obj) => {
 module.exports = {
     cloneObject: cloneObject,
     extend: extend,
-    objectToArray: objectToArray
+    objectToArray: objectToArray,
+    loadModules: loadModules
 }
